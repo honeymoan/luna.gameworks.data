@@ -1,0 +1,39 @@
+# .gitignore for a C# Microservice
+
+# Visual Studio files
+.vs/
+*.suo
+*.user
+*.userprefs
+*.csproj.user
+*.resharper
+*.resharper.user
+*.resharper.csproj.user
+*.ide
+*.opendocument
+
+# Build artifacts
+[Dd]ebug/
+[Rr]elease/
+[Bb]in/
+[Oo]bj/
+*.exe
+*.dll
+*.pdb
+*.tmp
+*.log
+*.bak
+*.orig
+*.swp
+[Tt]emp/
+[Tt]est[Rr]esults/
+*.aps
+*.manifest
+*.pch
+*.ipch
+*.obj
+*.idb
+*.iobj
+*.o
+*.out
+*.nc

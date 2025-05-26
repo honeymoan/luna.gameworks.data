@@ -1,0 +1,6 @@
+@luna.gameworks.data_HostAddress = http://localhost:5195
+
+GET {{luna.gameworks.data_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
