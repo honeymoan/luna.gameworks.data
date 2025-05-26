@@ -1,0 +1,113 @@
+@startuml
+class Collective {
+    +uuid : string
+    +collectiveName : string
+}
+
+'TODO: GLOSSARY should be an separated app feature (M2)
+class Project {
+    +uuid : string
+    +projectName : string
+    +projectType : ProjectType
+    +collectiveName : Collective
+    +glossary : string
+}
+
+enum ProjectType {
+    OBJECT_ORIENTED,
+    SCRIPT_ORIENTED
+}
+
+'TODO: GENRE, PLATFORM should be defined categories and not an enum or vinculated to a project (M2)
+'TODO: ART STYLE, OVERALLMOOD, SPECIFICIDEASMUSICSFX should be an object attached to thingys (M2)
+class ProjectDesign {
+    +uuid : string
+    +project : Project
+    +introduction : string
+    +elevatorPitch: string
+    +genre : string
+    +platform : string
+    +targetAudience : string
+    +monetization : string
+    +featureList : List<ProjectFeature>
+    +gameplayDesign : GameplayDesign
+    +story : GameStory
+    +artStyle: string
+    +overallMood : string
+    +specificIdeasMusicSfx: string
+}
+
+class ProjectFeature {
+    +uuid : string
+    +project : Project
+    +featureName : string
+    +featureDescription : string
+}
+
+class GameplayDesign {
+    +uuid : string
+    +projectDesign : ProjectDesign
+    +coreGameLoop : string
+    +playerObjectives : string
+    +gameProgression: string
+    +gameModes : List<GameMode>
+    +mechanics : List<GameMechanic>
+}
+
+'TODO: this should be a defined category and not an enum or vinculated to a project. (M2)
+class GameMode {
+    +uuid : string
+    +gameModeName : string
+    +gameModeDescription : string
+}
+
+'TODO: maybe some game mechanics can be global, like tower climbing for ubisoft. (M3)
+class GameMechanic {
+    +uuid : string
+    +gameplayDesign : GameplayDesign
+    +gameMechanicName : string;
+    +gameMechanicDescription : string
+    +gameMechanicType : GameMechanicType
+}
+
+enum GameMechanicType {
+    CORE,
+    SECONDARY,
+    CONTROLS
+}
+
+class GameStory {
+    +uuid : string
+    +projectDesign : ProjectDesign
+    +generalPremisse : string
+    +plotSetting : string
+    +keyCharacters : List<StoryCharacters>
+    +keyFactions : List<StoryFactions>
+}
+
+'TODO: this should be more complete AND on another diagram, maybe on a later milestone (M3)
+class StoryCharacters {
+    +uuid : string
+    +story : GameStory
+    +name : string
+}
+
+'TODO: this should be more complete, maybe on a later milestone (M3)
+class StoryFactions {
+    +uuid : string
+    +story : GameStory
+    +name : string
+}
+
+Project --> Collective
+Project *-- ProjectType
+Project --> ProjectDesign
+ProjectFeature *-- ProjectDesign
+ProjectDesign --> GameplayDesign
+GameMode *-- GameplayDesign
+GameMechanic *-- GameplayDesign
+GameMechanicType *-- GameMechanic
+ProjectDesign --> GameStory
+StoryCharacters *-- GameStory
+StoryFactions *-- GameStory
+@enduml
